@@ -18,13 +18,40 @@
 			"name" : "박사장"
 		} ];
 		// Function( Object elementOfArray, Integer indexInArray) => Object
-		// Function( Object elementOfArray, Integer indexInArray) => Object
+		// Function( Object propertyOfObject, String key) => Object
 		const res1 = $.map(arr1, function(obj, idx) {
 			if (obj.addr === '서울')
 				return obj.name;
 		});
-
 		console.log(res1);
+
+		// 마지막 인자를 넣지 않으면 true를 반환하는 모든 요소로 구성된 배열을 반환(객체로 넘어옴)
+		const res2 = $.grep(arr1, function(obj, idx) {
+			if (obj.addr === '서울')
+				return obj.name;
+		});
+		console.log(res2);
+
+		// 0보다 크지 않은 숫자를 포함하도록 숫자 배열을 필터링한다.
+		// 이때 true 생략하면 반대 결과가 나온다. ()
+		const res3 = $.grep([ 0, 1, 2 ], function(n, i) {
+			return n > 0;
+			// }, true); // 0
+		}); // [1, 2]
+		console.log(res3);
+	
+		// 서울인 인자를 가지고 있는 요소만 배열로 반환
+		const res4 = $.grep(arr1, function(obj, idx) {
+			return obj.addr == '서울';
+		});
+		console.log(res4);
+		
+		// 서울을 제외한 요소만 배열로 반환
+		const res5 = $.grep(arr1, function(obj, idx) {
+			return obj.addr == '서울';
+		}, true);
+		console.log(res5);
+		
 	});
 	// map
 </script>

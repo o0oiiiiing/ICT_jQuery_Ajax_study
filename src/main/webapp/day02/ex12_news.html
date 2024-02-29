@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>한줄 뉴스 - 자바스크립트</title>
+<script type="text/javascript">
+	const news = [ "전기차서 AI로...산업계 `글로벌 합종연횡`",
+			"비례 1석 줄여 전북 10석 유지 `총선 선거구 확정`...",
+			"쌍특검법 표결 엄경영 `비명횡사` 최대수혜자는 조국...이러다 민주 100석 될라",
+			"`기 꺾겠다` 한 살 배기 영아 폭행 사망...친모 공법 징역 30년 구형",
+			"[속보] 민주 `친문핵심` 홍영표 결국 컷오프...기동민, 안민석도 탈락",
+			"의대 막차 타자 ...의대 5명 추가 모집에 3000명 지원" ];
+	
+	let index = 0;
+	let timer;
+	function start_news() {
+		// 2초마다 showNews 함수를 실행하자. (showNewssms 콜백함수)
+		timer = setInterval(() => {
+			let div = document.querySelector("#mydiv");
+			div.textContent = news[index++];
+		if (index === news.length) {
+			index = 0;
+		}
+		}, 2000);
+	}
+	function stop_news() {
+		// setInterval() 중지
+		clearInterval(timer);
+	}
+</script>
+</head>
+<body>
+	<div id="mydiv"></div>
+	<button onclick="start_news()">뉴스보기</button>
+	<button onclick="stop_news()">뉴스중지</button>
+</body>
+</html>
